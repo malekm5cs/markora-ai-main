@@ -1,0 +1,232 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * MARKORA design system.
+ * Near-black cinematic environment, white editorial type, one blue accent.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-ink-dim: var(--ink-dim);
+  --color-ink-faint: var(--ink-faint);
+  --color-hairline: var(--hairline);
+  --color-void: var(--void);
+  
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Palette sourced from mark-ora.com */
+  --brand-cyan: #22d3ee;
+  --brand-cyan-ink: #06131b;
+  --ora-blue: #2e6bff;
+  --ora-blue-ink: #f4f8ff;
+  --brand-slate: #94a3b8;
+  --brand-slate-deep: #475569;
+  --brand-surface: #10141e;
+  --brand-line: #282c35;
+  --brand-bg: #0b0f19;
+  --brand-white: #f8fafc;
+  
+
+  --void: var(--brand-bg);
+  --background: var(--brand-bg);
+  --foreground: var(--brand-white);
+  --ink: var(--brand-white);
+  --ink-dim: rgb(148 163 184 / 90%);
+  --ink-faint: rgb(148 163 184 / 55%);
+  --hairline: rgb(40 44 53 / 100%);
+  --card: var(--brand-surface);
+  --card-foreground: var(--brand-white);
+  --popover: var(--brand-surface);
+  --popover-foreground: var(--brand-white);
+  --primary: var(--brand-cyan);
+  --primary-foreground: var(--brand-cyan-ink);
+  --secondary: var(--brand-surface);
+  --secondary-foreground: var(--brand-white);
+  --muted: var(--brand-surface);
+  --muted-foreground: var(--brand-slate);
+  --accent: var(--brand-cyan);
+  --accent-foreground: var(--brand-cyan-ink);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: var(--brand-white);
+  --border: var(--brand-line);
+  --input: var(--brand-line);
+  --ring: var(--brand-cyan);
+}
+
+html.light {
+  --brand-cyan: #0e7490;
+  --brand-cyan-ink: #f7f5f0;
+  --ora-blue: #1d4fe0;
+  --ora-blue-ink: #f4f8ff;
+  --brand-surface: #ffffff;
+  --brand-line: #ddd8cc;
+  --brand-bg: #ffffff;
+  --brand-white: #0b0f19;
+  --ink-dim: rgb(51 65 85 / 92%);
+  --ink-faint: rgb(71 85 105 / 70%);
+  --hairline: rgb(11 15 25 / 12%);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) { z-index: 2; }
+
+html, body, .theme-ease {
+  transition: background-color 600ms ease, color 600ms ease;
+}
+
+@layer base {
+  .custom-cursor-active,
+  .custom-cursor-active * {
+    cursor: none !important;
+  }
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+    background-color: var(--void);
+  }
+
+  body {
+    background-color: var(--void);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--brand-cyan);
+    color: var(--brand-cyan-ink);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* Display typography: tight, huge, confident. */
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+/* Small metadata typography: generous tracking. */
+@utility meta {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+@utility hairline-t {
+  border-top: 1px solid var(--hairline);
+}
+
+/* Fine film grain overlay. */
+@utility grain-layer {
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@utility edge-fade {
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
+/* Content sitting on dark imagery keeps the dark-theme ink in both modes. */
+@utility on-dark-media {
+  --ink: #f8fafc;
+  color: var(--ink);
+  --ink-dim: rgb(226 232 240 / 88%);
+  --ink-faint: rgb(226 232 240 / 60%);
+  --hairline: rgb(248 250 252 / 16%);
+}
+
+/* Ghost outline type for marquee strips. */
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--ink-faint);
+}
+
+@utility text-outline-cyan {
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(34 211 238 / 60%);
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Restrained feedback for the site's interactive and editorial details. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .premium-action { transition: translate 350ms cubic-bezier(.16,1,.3,1), transform 350ms cubic-bezier(.16,1,.3,1), border-color 350ms, background-color 350ms; }
+  .premium-action:hover { transform: translateY(-3px); }
+  .premium-action:active { transform: translateY(1px) scale(.98); }
+  .quiet-row { position: relative; isolation: isolate; transition: background-color 500ms cubic-bezier(.16,1,.3,1); }
+  .quiet-row::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--color-primary); opacity: 0; transform: scaleX(0); transform-origin: left; transition: transform 650ms cubic-bezier(.16,1,.3,1), opacity 650ms; }
+  .quiet-row:hover::before, .quiet-row:focus-visible::before { transform: scaleX(1); opacity: .055; }
+  .detail-line { transition: border-color 450ms, transform 450ms cubic-bezier(.16,1,.3,1); }
+  .detail-line:hover { border-color: var(--color-primary); transform: translateY(-4px); }
+  .detail-link { text-decoration: underline; text-decoration-color: transparent; text-underline-offset: .35em; transition: color 300ms, text-decoration-color 300ms; }
+  .detail-link:hover { text-decoration-color: var(--color-primary); }
+}
+
+@layer base {
+  html { text-rendering: optimizeLegibility; scrollbar-width: thin; scrollbar-color: var(--ora-blue, var(--primary)) transparent; }
+  :focus-visible { outline: 1px solid var(--ora-blue, var(--primary)); outline-offset: 3px; }
+  img, video { -webkit-user-drag: none; }
+}

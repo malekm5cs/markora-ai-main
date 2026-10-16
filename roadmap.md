@@ -1,0 +1,5 @@
+- [x] Refine cursor and button motion with reduced-motion support.
+- [x] Expand Ora's site-grounded answers and useful actions.
+- [x] Add restrained feedback to quieter service, work, about, and contact areas.
+- [x] Confirm preview interactions and build diagnostics.
+- [x] Add and verify Ora's cursor playground, star collection, pause/restart and chat shortcut.
