@@ -180,7 +180,7 @@ export function OrbitalSculpture() {
   }, []);
 
   return (
-    <section ref={ref} onPointerMove={(e) => { const r = e.currentTarget.getBoundingClientRect(); wellX.set(e.clientX - r.left); wellY.set(e.clientY - r.top - Math.max(0, -r.top)); }} className="relative h-[135svh] overflow-clip border-y border-hairline bg-void" data-cursor="Explore" aria-label="The shape of what comes next">
+    <section ref={ref} onPointerMove={(e) => { const r = e.currentTarget.getBoundingClientRect(); wellX.set(e.clientX - r.left); wellY.set(e.clientY - r.top - Math.max(0, -r.top)); }} className="relative h-[135svh] overflow-clip border-y border-hairline bg-void" aria-label="The shape of what comes next">
       <div className="sticky top-0 h-[100svh] overflow-hidden">
         <div className="pointer-events-none absolute inset-x-6 top-24 z-10 flex justify-between md:inset-x-10">
           <span className="meta">A new dimension</span>

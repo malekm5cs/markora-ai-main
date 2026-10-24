@@ -48,18 +48,17 @@ export function Navigation() {
           style={{ opacity: barOpacity, backdropFilter: barBlur }}
         />
         <a
-          href="#top"
-          onClick={(event) => {
-            event.preventDefault();
-            go("#top");
-          }}
-          data-cursor="hover"
-          className="block"
-          aria-label="MarkOra home"
-        >
-          <img src={logo} alt="MarkOra" className="h-6 w-auto md:h-7" />
-        </a>
-
+  href="#top"
+  onClick={(event) => {
+    event.preventDefault();
+    go("#top");
+  }}
+  data-cursor="hover"
+  className="block"
+  aria-label="MarkOra home"
+>
+  <img src={logo} alt="MarkOra" className="h-13 w-auto md:h-16" />
+</a>
         <div className="flex items-center gap-6">
           <nav className="hidden items-center gap-8 md:flex">
             {items.map((i) => {

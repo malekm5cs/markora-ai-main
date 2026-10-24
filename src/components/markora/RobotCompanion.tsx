@@ -111,6 +111,7 @@ export function RobotCompanion() {
   const [color, setColor] = useState("#3d8bff");
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [nudge, setNudge] = useState(true);
   const [typing, setTyping] = useState(false);
   const [input, setInput] = useState("");
   const [threads, setThreads] = useState<Thread[]>([]);
@@ -163,6 +164,11 @@ export function RobotCompanion() {
     };
     window.addEventListener("pointermove", move, { passive: true });
     return () => window.removeEventListener("pointermove", move);
+  }, []);
+
+  useEffect(() => {
+    const hide = setTimeout(() => setNudge(false), 20000);
+    return () => clearTimeout(hide);
   }, []);
 
   useEffect(() => {
@@ -458,7 +464,25 @@ export function RobotCompanion() {
 
       <div className="relative">
         <AnimatePresence>
-          {!open && hovered && (
+          {nudge && !open && (
+            <motion.div
+              initial={{ opacity: 0, y: 10, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 6, scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 300, damping: 26 }}
+              className="pointer-events-none absolute right-0 bottom-full mb-5 flex items-center gap-2.5 whitespace-nowrap rounded-xl border border-hairline bg-void/95 py-2.5 pr-4 pl-3 text-sm font-medium text-ink shadow-2xl backdrop-blur-xl"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--ora-blue)] opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--ora-blue)]" />
+              </span>
+              Hey there, I’m Ora. Ask me anything.
+              <span className="absolute -bottom-1 right-10 h-2 w-2 rotate-45 border-r border-b border-hairline bg-void md:right-12" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {!open && hovered && !nudge && (
             <motion.span initial={{ opacity: 0, x: 8 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }} className="meta absolute top-1/2 right-full mr-2 -translate-y-1/2 whitespace-nowrap rounded-full border border-hairline bg-void/80 px-3 py-1.5 backdrop-blur">
               Chat with Ora
             </motion.span>
