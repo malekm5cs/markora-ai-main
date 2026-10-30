@@ -4,28 +4,32 @@ import { useEffect, type ReactNode } from "react";
 export function SmoothScroll({ children }: { children?: ReactNode }) {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.35,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
+      wheelMultiplier: 0.2,
+      lerp: 0.05,
       syncTouch: true,
-      touchMultiplier: 1.6,
-      wheelMultiplier: 1,
-      lerp: 0.1,
+      touchMultiplier: 0.6,
     });
 
-    (window as unknown as { lenis?: Lenis }).lenis = lenis;
+    const scrollWindow = window as unknown as { lenis?: Lenis };
+    scrollWindow.lenis = lenis;
 
     let frame = 0;
+
     const raf = (time: number) => {
       lenis.raf(time);
       frame = requestAnimationFrame(raf);
     };
+
     frame = requestAnimationFrame(raf);
 
     return () => {
       cancelAnimationFrame(frame);
       lenis.destroy();
-      delete (window as unknown as { lenis?: Lenis }).lenis;
+
+      if (scrollWindow.lenis === lenis) {
+        delete scrollWindow.lenis;
+      }
     };
   }, []);
 

@@ -120,42 +120,42 @@ export const projects: Project[] = [
 
 export const capabilities = [
   {
-    word: "Social",
+    word: "Social Media",
     line: "Media Management",
     body: "Full ownership of your channels — bilingual content calendars in English and Arabic, community engagement, and platform strategy that keeps one consistent brand voice online.",
   },
   {
-    word: "Content",
+    word: "Content Creation",
     line: "Shoots & Production",
     body: "In-house photography and video production. Studio, on-location and event coverage, delivered as polished assets ready for campaigns, listings and communications.",
   },
   {
-    word: "Paid",
+    word: "Paid Ads",
     line: "Social Advertising",
     body: "Performance campaigns built to convert, not to impress. Audience architecture, creative testing, and budget discipline that turns spend into qualified leads.",
   },
   {
-    word: "Strategy",
+    word: "Marketing Strategy",
     line: "& Launch Control",
     body: "Positioning, funnel design and launch sequencing. Every engagement is built around what the business actually needs to grow — never an off-the-shelf package.",
   },
   {
-    word: "Event",
+    word: "Event Planning",
     line: "Planning",
     body: "Planning and on-ground execution for corporate and brand events — logistics, scheduling and coverage — as delivered for Siemens Energy Technology Day.",
   },
   {
-    word: "Web",
+    word: "Web Development",
     line: "Development",
     body: "High-converting websites and digital infrastructure. Fast, accessible, bilingual by default, and engineered so marketing and product move as one system.",
   },
   {
-    word: "Mobile",
+    word: "Mobile Apps",
     line: "App Development",
     body: "Native-feeling applications from concept to store. Product thinking, interface craft and engineering handled by the same team that builds the brand around it.",
   },
   {
-    word: "AI",
+    word: "AI Systems",
     line: "Systems",
     body: "Applied intelligence inside the funnel — automation, generative content pipelines and adaptive tools that extend a marketing team instead of replacing it.",
   },
